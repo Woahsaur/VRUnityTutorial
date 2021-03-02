@@ -9,7 +9,7 @@ namespace VR.Grabbing.GrabFeatures
 {
     public abstract class GrabFeature : MonoBehaviour
     {
-        [field:SerializeField] protected Grabbable Grabbable { get; private set; }
+        [field:SerializeField] public Grabbable Grabbable { get; private set; }
 
         public bool IsGrabbed { get; private set; }
 
@@ -61,6 +61,18 @@ namespace VR.Grabbing.GrabFeatures
         }
 
         protected virtual void HandleLetGo()
+        {
+
+        }
+
+        public void OnGrabberLostControl()
+        {
+            IsGrabbed = false;
+
+            HandleGrabberLostControl();
+        }
+
+        protected virtual void HandleGrabberLostControl()
         {
 
         }

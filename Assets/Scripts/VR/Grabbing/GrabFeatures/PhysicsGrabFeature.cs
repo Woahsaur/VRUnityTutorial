@@ -9,16 +9,15 @@ namespace VR.Grabbing.GrabFeatures
 {
     public class PhysicsGrabFeature : GrabFeature
     {
-        [SerializeField] private Rigidbody rigidBody;
-        [SerializeField] private float throwSpeedMultiplier = 1f;
+        [SerializeField] private PhysicsObject physicsObject;
 
         protected override void HandleStart()
         {
             base.HandleStart();
 
-            if (rigidBody == null)
+            if (physicsObject == null)
             {
-                rigidBody = GetComponent<Rigidbody>();
+                physicsObject = GetComponent<PhysicsObject>();
             }
         }
 
@@ -26,19 +25,21 @@ namespace VR.Grabbing.GrabFeatures
         {
             base.HandleGrabbed();
 
-            rigidBody.isKinematic = true;
-            rigidBody.useGravity = false;
+            physicsObject.OnGrabbed(Grabbable.ActiveGrabber);
         }
 
         protected override void HandleLetGo()
         {
             base.HandleLetGo();
 
-            rigidBody.isKinematic = false;
-            rigidBody.useGravity = true;
+            physicsObject.OnLetGo(Grabbable.ActiveGrabber);
+        }
 
-            rigidBody.velocity = Grabbable.ActiveGrabber.Velocity * throwSpeedMultiplier;
-            rigidBody.angularVelocity = Grabbable.ActiveGrabber.AngularVelocity;
+        protected override void HandleGrabberLostControl()
+        {
+            base.HandleGrabberLostControl();
+
+            physicsObject.RemoveGrabber(Grabbable.ActiveGrabber);
         }
     }
 }

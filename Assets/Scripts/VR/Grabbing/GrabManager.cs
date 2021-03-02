@@ -16,6 +16,8 @@ namespace VR.Grabbing
 
         private Grabbable activeGrabbable;
 
+        public HandInput Hand => hand;
+
         public Vector3 Velocity { get; private set; }
 
         public Vector3 AngularVelocity { get; private set; }
