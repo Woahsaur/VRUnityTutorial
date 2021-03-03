@@ -218,7 +218,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &18379993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,7 +806,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &70451951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1327,7 +1327,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &411833195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2221,7 +2221,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &616798156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3126,6 +3126,7 @@ GameObject:
   - component: {fileID: 1062771401}
   - component: {fileID: 1062771398}
   - component: {fileID: 1062771400}
+  - component: {fileID: 1062771403}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -3148,7 +3149,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!4 &1062771399
 Transform:
   m_ObjectHideFlags: 0
@@ -3177,8 +3178,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.045, y: 0.14692771, z: 0.28468317}
-  m_Center: {x: -8.881784e-16, y: 0.00832586, z: 0.09234157}
+  m_Size: {x: 0.045, y: 0.046134055, z: 0.2621454}
+  m_Center: {x: 4.440892e-15, y: 0.056844547, z: 0.103610456}
 --- !u!114 &1062771401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3204,6 +3205,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374d52258281ec84d87ca1401f44e3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1062771403
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062771397}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.045, y: 0.08873117, z: 0.1}
+  m_Center: {x: -1.110223e-15, y: -0.0118949, z: 0}
 --- !u!1 &1085212068
 GameObject:
   m_ObjectHideFlags: 0
@@ -3586,7 +3600,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &1176611189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4446,7 +4460,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &1335431709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5038,7 +5052,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &1666935197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5125,6 +5139,7 @@ GameObject:
   - component: {fileID: 1669255553}
   - component: {fileID: 1669255551}
   - component: {fileID: 1669255550}
+  - component: {fileID: 1669255555}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -5143,8 +5158,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.045, y: 0.14692771, z: 0.5692768}
-  m_Center: {x: 8.881784e-16, y: 0.00832586, z: 0.16954517}
+  m_Size: {x: 0.045, y: 0.058421016, z: 0.5692768}
+  m_Center: {x: -2.6645353e-15, y: 0.05257921, z: 0.16954517}
 --- !u!54 &1669255551
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5160,7 +5175,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!4 &1669255552
 Transform:
   m_ObjectHideFlags: 0
@@ -5204,6 +5219,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374d52258281ec84d87ca1401f44e3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1669255555
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669255549}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.045, y: 0.08889267, z: 0.1}
+  m_Center: {x: 2.220446e-16, y: -0.0055536665, z: 0}
 --- !u!43 &1675372031
 Mesh:
   m_ObjectHideFlags: 0
@@ -5466,7 +5494,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &1757494415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6538,7 +6566,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &2119226326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6648,7 +6676,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &2131097301
 MonoBehaviour:
   m_ObjectHideFlags: 0
