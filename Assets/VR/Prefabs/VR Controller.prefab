@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4133874164633748048}
   - component: {fileID: 4133874164633748049}
   - component: {fileID: -3902585927778904191}
+  - component: {fileID: 9116623744984179639}
+  - component: {fileID: 4731801380663801490}
   m_Layer: 0
   m_Name: VR Controller
   m_TagString: Untagged
@@ -119,6 +121,38 @@ MonoBehaviour:
   grabLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &9116623744984179639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4133874164633748054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c027da9c2208140938a6ae01df8b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangedGrabZoneLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  detectionRange: 5
+--- !u!114 &4731801380663801490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4133874164633748054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b47765e7103b04c8c324ce1e2d2513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickActivated: 0
+  flickBeginThreshold: 0
+  flickEndThreshold: 0
+  rangedGrabDuration: 0.25
 --- !u!1 &4133874165412899045
 GameObject:
   m_ObjectHideFlags: 0
