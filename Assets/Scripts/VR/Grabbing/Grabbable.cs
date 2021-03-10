@@ -13,6 +13,7 @@ namespace VR.Grabbing
     {
         [SerializeField] private UnityEvent onGrabbed;
         [SerializeField] private UnityEvent onLetGo;
+        [SerializeField] private UnityEvent onGrabberLostControl;
 
         public GrabManager ActiveGrabber { get; private set; }
 
@@ -33,10 +34,17 @@ namespace VR.Grabbing
             ActiveGrabber = null;
         }
 
+        public void GrabberLostControl()
+        {
+            onGrabberLostControl?.Invoke();
+            ActiveGrabber = null;
+        }
+
         public void RegisterGrabFeature(GrabFeature grabFeature)
         {
             onGrabbed.AddListener(grabFeature.OnGrabbed);
             onLetGo.AddListener(grabFeature.OnLetGo);
+            onGrabberLostControl.AddListener(grabFeature.OnGraberLostControl);
         }
     }
 }
