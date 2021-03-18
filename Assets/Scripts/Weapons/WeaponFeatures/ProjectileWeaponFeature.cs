@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
+using VR;
 using VR.Grabbing;
 using VR.Grabbing.GrabFeatures;
 using Weapons.Projectiles;
@@ -15,6 +17,7 @@ namespace Weapons.WeaponFeatures
     {
         [SerializeField] private Projectile projectileTemplate;
         [SerializeField] private Vector3 muzzlePosition;
+        [SerializeField] private UnityEvent<HandInput> onProjectileFired;
 
         private GrabManager activeGrabber;
 
@@ -40,6 +43,7 @@ namespace Weapons.WeaponFeatures
         {
             var projectileInstance = Instantiate(projectileTemplate, transform.TransformPoint(muzzlePosition), Quaternion.identity);
             projectileInstance.Fire(transform.forward);
+            onProjectileFired.Invoke(activeGrabber.Hand);
         }
 
         protected override void HandleGrabPointLetGo(GrabPointGrabFeature grabPoint)

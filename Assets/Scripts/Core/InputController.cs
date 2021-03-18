@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR.Haptics;
 using VR;
 
 namespace Core
@@ -41,6 +44,8 @@ namespace Core
         public List<Action<Vector3>>[] deviceVelocityNotifies = new List<Action<Vector3>>[2];
         public List<Action<Vector3>>[] deviceAngularVelocityNotifies = new List<Action<Vector3>>[2];
 
+        public InputDevice[] XRControllers { get; private set; }
+
         private void Awake()
         {
             if (Instance == null)
@@ -48,6 +53,7 @@ namespace Core
                 Instance = this;
                 inputActions = new CoreInputActions();
                 PopulateDefaultNotifyLists();
+                PopulateXRControllers();
             }
             else if(Instance != this)
             {
@@ -82,6 +88,58 @@ namespace Core
                 deviceVelocityNotifies[i] = new List<Action<Vector3>>();
                 deviceAngularVelocityNotifies[i] = new List<Action<Vector3>>();
             }
+        }
+
+        private void PopulateXRControllers()
+        {
+            XRControllers = new InputDevice[2];
+
+            InputSystem.onDeviceChange += (device, change) =>
+            {
+                switch (change)
+                {
+                    case InputDeviceChange.Added:
+                        if (device.usages.Contains(CommonUsages.LeftHand))
+                        {
+                            XRControllers[(int)HandInput.Left] = device;
+                        }
+                        if (device.usages.Contains(CommonUsages.RightHand))
+                        {
+                            XRControllers[(int)HandInput.Right] = device;
+                        }
+                        break;
+                    case InputDeviceChange.Removed:
+                        if (device.usages.Contains(CommonUsages.LeftHand))
+                        {
+                            XRControllers[(int)HandInput.Left] = null;
+                        }
+                        if (device.usages.Contains(CommonUsages.RightHand))
+                        {
+                            XRControllers[(int)HandInput.Right] = null;
+                        }
+                        break;
+                    case InputDeviceChange.Reconnected:
+                        if (device.usages.Contains(CommonUsages.LeftHand))
+                        {
+                            XRControllers[(int)HandInput.Left] = device;
+                        }
+                        if (device.usages.Contains(CommonUsages.RightHand))
+                        {
+                            XRControllers[(int)HandInput.Right] = device;
+                        }
+                        break;
+                    case InputDeviceChange.Disconnected:
+                        if (device.usages.Contains(CommonUsages.LeftHand))
+                        {
+                            XRControllers[(int)HandInput.Left] = null;
+                        }
+                        if (device.usages.Contains(CommonUsages.RightHand))
+                        {
+                            XRControllers[(int)HandInput.Right] = null;
+                        }
+                        break;
+                }
+            };
         }
 
         #region Grip Registers
@@ -346,6 +404,19 @@ namespace Core
             {
                 gripStrengthNotifies[i].Clear();
                 gripTriggeredNotifies[i].Clear();
+            }
+        }
+
+        public void SendHaptics(HandInput hand, int channel, float amplitude, float duration)
+        {
+            if (XRControllers[(int)hand] != null)
+            {
+                var hapticsRequest = SendHapticImpulseCommand.Create(channel, amplitude, duration);
+                XRControllers[(int)hand].ExecuteCommand(ref hapticsRequest);
+            }
+            else
+            {
+                Debug.LogWarning("Attempted to send haptics input to a null device.");
             }
         }
     }

@@ -1600,6 +1600,9 @@ MonoBehaviour:
   weapon: {fileID: 1669255554}
   projectileTemplate: {fileID: 358526400}
   muzzlePosition: {x: 0, y: 0, z: 0}
+  onProjectileFired:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &654711580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,6 +2026,7 @@ GameObject:
   - component: {fileID: 786467479}
   - component: {fileID: 786467478}
   - component: {fileID: 786467477}
+  - component: {fileID: 786467480}
   m_Layer: 6
   m_Name: Primary Grab Point
   m_TagString: Untagged
@@ -2095,6 +2099,23 @@ MonoBehaviour:
   onGrabberLostControl:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &786467480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786467475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640497257dd6b224c9abc4cd3a7bc5d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Grabbable>k__BackingField: {fileID: 0}
+  hapticsImpulse:
+    channel: 0
+    amplitude: 0.2
+    duration: 0.1
 --- !u!1 &787257821
 GameObject:
   m_ObjectHideFlags: 0
@@ -2343,6 +2364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 914696497}
   - component: {fileID: 914696498}
+  - component: {fileID: 914696499}
   m_Layer: 0
   m_Name: Primary Projectile Fire
   m_TagString: Untagged
@@ -2379,6 +2401,37 @@ MonoBehaviour:
   weapon: {fileID: 1062771402}
   projectileTemplate: {fileID: 358526400}
   muzzlePosition: {x: 0, y: 0, z: 0}
+  onProjectileFired:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 914696499}
+        m_TargetAssemblyTypeName: VR.HapticsTrigger, Assembly-CSharp
+        m_MethodName: TriggerHaptics
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &914696499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914696496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0b51ac1fa40aa418cb171b225e3653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impulse:
+    channel: 0
+    amplitude: 0.1
+    duration: 0.1
 --- !u!1 &946972855
 GameObject:
   m_ObjectHideFlags: 0
