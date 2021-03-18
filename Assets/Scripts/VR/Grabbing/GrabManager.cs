@@ -54,7 +54,7 @@ namespace VR.Grabbing
             }
         }
 
-        private void PerformGrab(Grabbable grabbable)
+        public void PerformGrab(Grabbable grabbable)
         {
             if (activeGrabbable == grabbable)
                 return;
@@ -94,6 +94,12 @@ namespace VR.Grabbing
                 activeGrabbable.GrabberLostControl();
                 activeGrabbable = null;
             }
+        }
+
+
+        public bool HasActiveGrabbable()
+        {
+            return activeGrabbable != null;
         }
     }
 }
