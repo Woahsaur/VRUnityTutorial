@@ -194,13 +194,5 @@ namespace VR.Grabbing.RangedGrabbing
 
             executingRangedGrab = false;
         }
-
-        private void Update()
-        {
-            if (flickActivated)
-            {
-                // Check if flick occured
-            }
-        }
     }
 }
